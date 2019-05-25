@@ -32,6 +32,7 @@ public class Board : MonoBehaviour {
         Queue<Tile> checkNext = new Queue<Tile> ();
         Queue<Tile> checkNow = new Queue<Tile> ();
         start.distance = 0;
+
         checkNow.Enqueue (start);
         while (checkNow.Count > 0) {
             Tile t = checkNow.Dequeue ();
@@ -39,8 +40,9 @@ public class Board : MonoBehaviour {
             for (int i = 0; i < 4; ++i) {
                 Tile next = GetTile (t.pos + dirs[i]);
                 // Add more code here
-                if (next == null || next.distance <= t.distance + 1)
+                if (next == null || next.distance <= t.distance + 1) {
                     continue;
+                }
 
                 if (addTile (t, next)) {
                     next.distance = t.distance + 1;
